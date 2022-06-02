@@ -1,0 +1,1 @@
+execute all files with betty
