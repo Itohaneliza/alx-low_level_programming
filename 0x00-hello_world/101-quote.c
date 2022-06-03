@@ -2,10 +2,13 @@
 #include <unistd.h>
 
 /**
- * main - Entry point
+ * main - print quote
+ *
+ * Description: prints Dora's quote
  *
  * Return: Always 1(success).
  */
+ 
 int main(void)
 {
 	char str1[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
