@@ -1,25 +1,50 @@
 #include "main.h"
 
-/* Solution credit goes to Arthur Damm, cohort 8. */
+/**
+ * _strlen_recursion - size
+ * @s: pointer to string params
+ * Return: recursion
+ */
+
+int _strlen_recursion(char *s)
+{
+	if (!*s)
+	{
+		return (0);
+	}
+	return (1 + _strlen_recursion(++s));
+}
 
 /**
- * wildcmp - compares two strings and returns 1 if the strings can be
- * considered identical, otherwise return 0
- * @s1: input string1
- * @s2: input string2
- * Return: 1 if true, 0 if false
+ * p1 - palindrome
+ * @s: pointer to string
+ * @l: position
+ * Return: boolena
  */
-int wildcmp(char *s1, char *s2)
+
+int p1(char *s, int l)
 {
-	if (*s1 == '\0')
+	if (l < 1)
 	{
-		if (*s2 != '\0' && *s2 == '*')
-			return (wildcmp(s1, s2 + 1));
-		return (*s2 == '\0');
+		return (1);
 	}
-	if (*s2 == '*')
-		return (wildcmp(s1 + 1, s2) || wildcmp(s1, s2 + 1));
-	else if (*s1 == *s2)
-		return (wildcmp(s1 + 1, s2 + 1));
+
+	if (*s == *(s + l))
+	{
+		return (p1(s + 1, l - 2));
+	}
 	return (0);
+}
+
+/**
+ * is_palindrome - palindrome
+ * @s: pointer to string
+ * Return: recursion
+ */
+
+int is_palindrome(char *s)
+{
+	int len = _strlen_recursion(s);
+
+	return (p1(s, len - 1));
 }
